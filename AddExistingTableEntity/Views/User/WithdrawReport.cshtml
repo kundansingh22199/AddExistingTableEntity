@@ -1,6 +1,6 @@
 ﻿@using BussinessEntity.Models
 @{
-    ViewBag.Title = "UsdtFundRequestReport ";
+    ViewBag.Title = "WithdrawReport ";
     Layout = "~/Views/Shared/_CommonLayout.cshtml";
 }
 <link rel="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" type="text/css" />
@@ -18,7 +18,7 @@
     <div class="col-sm-12">
         <div class="panel panel-default card-view pt-0">
             <div class="header">
-                <h2 class="panel__tit">Usdt Fund Request Report</h2>
+                <h2 class="panel__tit">Withdrawal Report</h2>
 
             </div>
             <div class="clearfix">
@@ -32,14 +32,11 @@
                                 <thead>
                                     <tr>
                                         <td>#No.</td>
-                                        <td>User ID</td>
-                                        <td>Name</td>
-                                        <td>Usdt($)</td>
-                                        <td>Transaction No</td>
-                                        <td>Address</td>
+                                        <td>Regno</td>
+                                        <td>Amount($)</td>
                                         <td>Status</td>
-                                        <td>Remarks</td>
-                                        <td>CreateDate</td>
+                                        <td>Remark</td>
+                                        <th>Date</th>
                                     </tr>
                                 </thead>
                                 <tbody class="trderlist">
@@ -48,18 +45,15 @@
                                     }
                                     @if (ViewData["lst"] != null)
                                     {
-                                        foreach (var item in ViewData["lst"] as List<modUsdtRequest>)
+                                        foreach (var item in ViewData["lst"] as List<Withdrawreport>)
                                         {
                                             <tr>
                                                 <td>@(rowNo += 1)</td>
-                                                <td>@item.Regno</td>
-                                                <td>@item.Name</td>
-                                                <td>$@item.usd</td>
-                                                <td>@item.TranNo</td>
-                                                <td>@item.address</td>
+                                                <td>@item.regno</td>
+                                                <td>$@item.Amount</td>
                                                 <td>@item.status</td>
-                                                <td>@item.Remark</td>
-                                                <td>@item.Createdate</td>
+                                                <td>@item.Remarks</td>
+                                                <td>@item.createdate</td>
                                             </tr>
                                         }
                                     }

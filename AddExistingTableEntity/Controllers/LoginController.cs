@@ -1,6 +1,7 @@
 ﻿using AddExistingTableEntity.Models;
 using BussinessEntity.Models;
 using InterfaceLibrary;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -97,6 +98,35 @@ namespace AddExistingTableEntity.Controllers
                 ViewBag.Err = "Login Failed";
                 return View();
             }
+        }
+        [HttpGet]
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+            HttpContext.SignOutAsync();
+            return RedirectToAction("SignIn", "Login");
+        }
+        public IActionResult ForgetPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ForgetPassword(string UId)
+        {
+            string name = "";
+            if (!string.IsNullOrEmpty(UId))
+            {
+                name = await _icontract.CheckSponsorIDAsync(UId);
+                if (name != "Invalid Sponsor id." && name != null)
+                {
+
+                }
+            }
+            else
+            {
+                name = "";
+            }
+            return View();
         }
     }
 }

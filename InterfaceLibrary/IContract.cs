@@ -19,5 +19,20 @@ namespace InterfaceLibrary
         Task<int> fundrequest(modFundrequest obj);
         Task<string> TranCheckAsync(string tran);
         Task<int> fundrequestusdt(modUsdtRequest obj);
+        Task<List<modUsdtRequest>> UsdtFundRequestReportAsync(string regNo);
+        Task<List<modFundReceive>> UsdtFundReceiveReportAsync(string regNo);
+        Task<decimal> TopupBalance(string regno);
+        Task<string> GetTranPassword(string regno);
+        Task<int> TopUpAsync(ModTopup obj);
+        Task<List<topupreport>> TopUpReportAsync(string regNo);
+        Task<decimal> GetBalance(string regno);
+        Task<int> withdrawBalance(ModWithdraw obj);
+        Task<List<Withdrawreport>> WithdrawReport(string regNo);
+        Task<List<ModDirectIncome>> DirectIncomeAsync(string regNo);
+        Task<List<ModLevelIncome>> LevelIncomeAsync(string regNo);
+        Task<List<ModRoiIncome>> RoiIncomeAsync(string regNo);
+        Task<List<modCompose>> InboxAsync(string regNo);
+        Task<List<modCompose>> OutboxAsync(string regNo);
+        Task<int> ComposeAsync(modCompose obj);
     }
 }

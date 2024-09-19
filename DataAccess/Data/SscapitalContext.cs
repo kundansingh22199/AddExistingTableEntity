@@ -59,6 +59,14 @@ public partial class SscapitalContext : DbContext, ISscapitalContext
     public virtual DbSet<ModTeamDetails> myteam { get; set; }
     public DbSet<modUsdtRequest> fundusdt { get; set; }
     public DbSet<modFundReceive> fundreceive { get; set; }
+    public DbSet<topupbal> topupbal { get; set; }
+    public DbSet<ModPassword> pass { get; set; }
+    public DbSet<topupreport> topup { get; set; }
+    public DbSet<Withdrawreport> withdraw { get; set; }
+    public DbSet<ModDirectIncome> directincome { get; set; }
+    public DbSet<ModLevelIncome> levelincome { get; set; }
+    public DbSet<ModRoiIncome> roiincome { get; set; }
+    public DbSet<modCompose> mail { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=SqlCon");
 
@@ -97,10 +105,9 @@ public partial class SscapitalContext : DbContext, ISscapitalContext
 
         modelBuilder.Entity<TblAppmst>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Tbl_Appmst");
+            entity.HasKey(e => e.Id);
 
+            entity.ToTable("Tbl_Appmst");
             entity.Property(e => e.ActiveDate).HasColumnType("datetime");
             entity.Property(e => e.Country)
                 .HasMaxLength(100)
@@ -360,9 +367,9 @@ public partial class SscapitalContext : DbContext, ISscapitalContext
 
         modelBuilder.Entity<TblKycDetail>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Tbl_KYC_Detail");
+            entity.HasKey(e => e.Id);
+
+            entity.ToTable("Tbl_KYC_Detail");
 
             entity.Property(e => e.AccountName)
                 .HasMaxLength(100)
@@ -590,6 +597,36 @@ public partial class SscapitalContext : DbContext, ISscapitalContext
             .HasKey(m => m.RegNo);
         modelBuilder.Entity<ModTeamDetails>()
             .HasKey(m => m.regno);
+        modelBuilder.Entity<modFundReceive>()
+            .HasNoKey()
+            .ToView(null);
+        modelBuilder.Entity<modUsdtRequest>()
+            .HasNoKey()
+            .ToView(null);
+        modelBuilder.Entity<ModPassword>()
+            .HasNoKey()
+            .ToView(null);
+        modelBuilder.Entity<topupbal>()
+            .HasNoKey()
+            .ToView(null);
+        modelBuilder.Entity<topupreport>()
+            .HasNoKey()
+            .ToView(null);
+        modelBuilder.Entity<Withdrawreport>()
+            .HasNoKey()
+            .ToView(null);
+        modelBuilder.Entity<ModDirectIncome>()
+               .HasNoKey()
+               .ToView(null);
+        modelBuilder.Entity<ModLevelIncome>()
+           .HasNoKey()
+           .ToView(null);
+        modelBuilder.Entity<ModRoiIncome>()
+           .HasNoKey()
+           .ToView(null);
+        modelBuilder.Entity<modCompose>()
+          .HasNoKey()
+          .ToView(null);
         OnModelCreatingPartial(modelBuilder);
     }
 

@@ -51,5 +51,11 @@ namespace InterfaceLibrary
         DbSet<ModDashboard> dashboard { get; set; }
 
         DbSet<ModTeamDetails> myteam { get; set; }
+        DbSet<topupbal> topupbal { get; set; }
+        DbSet<ModPassword> pass { get; set; }
+        DbSet<topupreport> topup { get; set; }
+        DbSet<modCompose> mail { get; set; }
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+        int SaveChanges();
     }
 }
